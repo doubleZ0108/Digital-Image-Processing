@@ -1,13 +1,13 @@
 clear
 clc
 
-img = imread('Resources/gray13.jpg');
+img = imread('Resources/gray2.jpg');
 figure;
 imshow(img, []);
 
 small_img = myimresize(img, 0.5, 'bilinear');
 figure;
-imshow(small_img,[]);      % ç¬¬äºŒä¸ªå‚æ•° -> è‡ªåŠ¨è°ƒæ•´æ•°æ®çš„èŒƒå›´ä»¥ä¾¿äºæ˜¾ç¤ºï¼›å¦‚æœä¸åŠ ç¬¬äºŒä¸ªå‚æ•°åˆ™çŸ©é˜µæ˜¯æ­£ç¡®çš„ï¼Œä½†æ˜¯å›¾åƒæ˜¯å…¨ç™½çš„
+imshow(small_img,[]);      % µÚ¶ş¸ö²ÎÊı -> ×Ô¶¯µ÷ÕûÊı¾İµÄ·¶Î§ÒÔ±ãÓÚÏÔÊ¾£»Èç¹û²»¼ÓµÚ¶ş¸ö²ÎÊıÔò¾ØÕóÊÇÕıÈ·µÄ£¬µ«ÊÇÍ¼ÏñÊÇÈ«°×µÄ
 
 big_img = myimresize(img, 2, 'bilinear');
 figure;
@@ -16,7 +16,7 @@ imshow(big_img, []);
 
 function result_img = myimresize(origin_img, scale, algorithm)
 
-% å¥å£®æ€§æ£€æµ‹
+% ½¡×³ĞÔ¼ì²â
 if ~exist('origin_img','var') || isempty(origin_img)
     error('You should input the origin image.');
 end
@@ -28,11 +28,11 @@ if scale<=0
 end
 
 
-% é»˜è®¤ç®—æ³•ä¸º nearestç®—æ³•
+% Ä¬ÈÏËã·¨Îª nearestËã·¨
 if nargin<3, algorithm='nearest'; end
 
 
-% è·å–åŸå›¾ç‰‡å¤§å°ã€ç›®æ ‡å›¾ç‰‡å¤§å°
+% »ñÈ¡Ô­Í¼Æ¬´óĞ¡¡¢Ä¿±êÍ¼Æ¬´óĞ¡
 [origin_width, origin_height, type] = size(origin_img);
 origin_size = [origin_width, origin_height];
 target_size = round(origin_size * scale);
@@ -54,24 +54,24 @@ end
 
 % ======================== nearest ================================ %
 function result_img = Nearest(origin_img, result_img, origin_size, target_size, scale, type)
-% æœ€è¿‘é‚»åŸŸå†…æ’æ³•(Nearest Neighbor interpolation)
+% ×î½üÁÚÓòÄÚ²å·¨(Nearest Neighbor interpolation)
 
 for x=1:target_size(1)
     for y=1:target_size(2)
         
-        % å°†resultä¸­çš„æ¯ä¸ªåƒç´ ä½ç½®å¯¹åº”åˆ°originä¸­
+        % ½«resultÖĞµÄÃ¿¸öÏñËØÎ»ÖÃ¶ÔÓ¦µ½originÖĞ
         a = (x+0.5) / scale + 0.5;
         b = (y+0.5) / scale + 0.5;
         
-        % æ‰¾åˆ°æœ€è¿‘çš„å››ä¸ªåƒç´ ä½ç½®
+        % ÕÒµ½×î½üµÄËÄ¸öÏñËØÎ»ÖÃ
         [a1,a2,b1,b2] = growNearest(a, b, origin_size(1), origin_size(2));
         
-        % å¯»æ‰¾å››ä¸ªä½ç½®ä¸­è·ç¦»æ’å€¼ç‚¹æœ€è¿‘çš„ä½ç½®
+        % Ñ°ÕÒËÄ¸öÎ»ÖÃÖĞ¾àÀë²åÖµµã×î½üµÄÎ»ÖÃ
         D = [distance(a,b,a1,b1),distance(a,b,a1,b2),distance(a,b,a2,b1),distance(a,b,a2,b2)];
         [min_x, min_y] = findMinPos(a1,a2,b1,b2,D);
         
         for z=1:type
-             % å°†è¿™ä¸ªç‚¹çš„åƒç´ èµ‹äºˆæ’å€¼ç‚¹
+             % ½«Õâ¸öµãµÄÏñËØ¸³Óè²åÖµµã
             result_img(x,y,z) = origin_img(min_x,min_y,z);
         end
     end
@@ -81,8 +81,8 @@ end
 end
 
 function [a1,a2,b1,b2] = growNearest(a, b, width, height)
-% è¿”å›ç‚¹(x,y)åˆ°ç‚¹(a,b)çš„æ¬§æ‹‰è·ç¦»å¹³æ–¹
-% åªéœ€è¦æ¯”è¾ƒè·ç¦»å¤§å°è¿›è¡Œé€‰æ‹©ï¼Œè¿™é‡Œçœå»å¼€æ ¹è¿ç®—
+% ·µ»Øµã(x,y)µ½µã(a,b)µÄÅ·À­¾àÀëÆ½·½
+% Ö»ĞèÒª±È½Ï¾àÀë´óĞ¡½øĞĞÑ¡Ôñ£¬ÕâÀïÊ¡È¥¿ª¸ùÔËËã
 
 a1 = round(a);
 if a1>width-1, a1 = width-1; end
@@ -95,20 +95,20 @@ b2 = b1 + 1;
 end
 
 function length = distance(x, y, a, b)
-% æ‰¾å‡ºè·æ’å€¼ç‚¹æœ€è¿‘ä½ç½®
-% DçŸ©é˜µå­˜å‚¨å‘¨å›´ç‚¹åˆ°æ’å€¼ç‚¹çš„ä½ç½®
+% ÕÒ³ö¾à²åÖµµã×î½üÎ»ÖÃ
+% D¾ØÕó´æ´¢ÖÜÎ§µãµ½²åÖµµãµÄÎ»ÖÃ
 
 length = (x-a)^2 + (y-b)^2;
 
 end
 
 function [min_x, min_y] = findMinPos(a1,a2,b1,b2,D)
-% æ‰¾å‡ºè·æ’å€¼ç‚¹æœ€è¿‘ä½ç½®
-% DçŸ©é˜µå­˜å‚¨å‘¨å›´ç‚¹åˆ°æ’å€¼ç‚¹çš„ä½ç½®
+% ÕÒ³ö¾à²åÖµµã×î½üÎ»ÖÃ
+% D¾ØÕó´æ´¢ÖÜÎ§µãµ½²åÖµµãµÄÎ»ÖÃ
 
 minindex = find(D==max(D));
 
-switch(minindex(1))     % å¯èƒ½æœ‰å¤šä¸ªæœ€è¿‘å€¼ï¼Œè¿™é‡Œé€‰æ‹©ç¬¬ä¸€ä¸ª
+switch(minindex(1))     % ¿ÉÄÜÓĞ¶à¸ö×î½üÖµ£¬ÕâÀïÑ¡ÔñµÚÒ»¸ö
     case 1
         min_x = a1;
         min_y = b1;
@@ -125,3 +125,48 @@ end
 
 end
 % ======================== nearest ================================ %
+
+
+
+
+
+% ======================== bilinear ================================ %
+function result_img = Bilinear(origin_img, result_img, origin_size, target_size, scale, type)
+
+% À©Õ¹Ô­Ê¼Í¼Æ¬¾ØÕó±ßÔµ
+tmp_img = zeros(origin_size(1)+2,origin_size(2)+2,type);
+tmp_img(2:origin_size(1)+1,2:origin_size(2)+1,:) = origin_img;
+tmp_img(1,2:origin_size(2)+1,:) = origin_img(1,:,:); tmp_img(origin_size(1)+2,2:origin_size(2)+1,:) = origin_img(origin_size(1),:,:);
+tmp_img(2:origin_size(1)+1,1,:) = origin_img(:,1,:); tmp_img(2:origin_size(1)+1,origin_size(2)+2,:) = origin_img(:,origin_size(2),:);
+tmp_img(1,1,:) = origin_img(1,1,:); tmp_img(1,origin_size(2)+2,:) = origin_img(1,origin_size(2),:);
+tmp_img(origin_size(1)+2,1,:) = origin_img(origin_size(1),1,:); tmp_img(origin_size(1)+2,origin_size(2)+2,:) = origin_img(origin_size(1),origin_size(2),:);
+
+
+% ÓÉĞÂÍ¼ÏñÄ³¸öÏñËØ(x,y) -Ó³Éä-> Ô­Ê¼Í¼Ïñ(ii,jj)´¦£¬²¢²åÖµ
+for x=1:target_size(1)
+    for y=1:target_size(2)
+       ii = (x-1)/scale; jj = (y-1)/scale;
+       i = floor(ii); j = floor(jj);
+       u = ii-i; v = jj - j;
+       i = i+1; j = j+1;
+       result_img(x,y,:) = (1-u)*(1-v)*tmp_img(i,j,:) + (1-u)*v*tmp_img(i,j+1,:) + u*(1-v)*tmp_img(i+1,j,:) + u*v*tmp_img(i+1,j+1,:);
+    end
+end
+
+end
+% ======================== bilinear ================================ %
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
