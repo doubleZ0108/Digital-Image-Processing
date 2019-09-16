@@ -1,15 +1,15 @@
 clear
 clc
 
-img = imread('Resources/gray2.jpg');
+img = imread('Resources/color2.jpg');
 figure;
 imshow(img, []);
 
-small_img = myimresize(img, 0.5, 'bilinear');
+small_img = myimresize(img, 0.5, 'bicubic');
 figure;
 imshow(small_img,[]);      % 第二个参数 -> 自动调整数据的范围以便于显示；如果不加第二个参数则矩阵是正确的，但是图像是全白的
 
-big_img = myimresize(img, 2, 'bilinear');
+big_img = myimresize(img, 2, 'bicubic');
 figure;
 imshow(big_img, []);
 
@@ -45,7 +45,7 @@ switch(algorithm)
     case 'bilinear'
         result_img = Bilinear(origin_img, result_img, origin_size, target_size,scale, type);
     case 'bicubic'
-        ;
+        result_img = Bicubic(origin_img, result_img, origin_size, target_size,scale, type);
 end
 
 
@@ -156,6 +156,114 @@ end
 end
 % ======================== bilinear ================================ %
 
+
+
+
+% ======================== bicubic ================================ %
+% function result_img = Bicubic(origin_img, result_img, origin_size, target_size, scale, type)
+% 
+% m = round(origin_size(1)/2); n = round(origin_size(1)/2);
+% f = zeros(m,n);
+% 
+% %将图像隔行隔列抽取元素，得到缩小的图像f
+% for i=1:m
+%     for j=1:n
+%         f(i,j)=origin_img(2*i,2*j);
+%     end
+% end
+% 
+% k=scale*2;%设置放大倍数
+% a=f(1,:);%取f的第1行
+% c=f(m,:);%取f的第m行
+% 
+% %将待插值图像矩阵前后各扩展两行两列,共扩展四行四列到f1
+% b=[f(1,1),f(1,1),f(:,1)',f(m,1),f(m,1)];
+% d=[f(1,n),f(1,n),f(:,n)',f(m,n),f(m,n)];
+% a1=[a;a;f;c;c];
+% b1=[b;b;a1';d;d];
+% ffff=b1';f1=double(ffff);
+% 
+% for i=1:k*m%利用双三次插值公式对新图象所有像素赋值
+%     u=rem(i,k)/k;
+%     i1=floor(i/k)+2;
+%     A=[sw(1+u) sw(u) sw(1-u) sw(2-u)];
+%     for j=1:k*n
+%         v=rem(j,k)/k;j1=floor(j/k)+2;
+%         C=[sw(1+v);sw(v);sw(1-v);sw(2-v)];
+%         
+%         B=[f1(i1-1,j1-1) f1(i1-1,j1) f1(i1-1,j1+1) f1(i1-1,j1+2); 
+%            f1(i1,j1-1) f1(i1,j1) f1(i1,j1+1) f1(i1,j1+2);
+%            f1(i1+1,j1-1) f1(i1+1,j1) f1(i1+1,j1+1) f1(i1+1,j1+2);
+%            f1(i1+2,j1-1) f1(i1+2,j1) f1(i1+2,j1+1) f1(i1+2,j1+2)];
+%        
+%         A*B*C
+%         result_img(i,j)=(A*B*C);
+%     end
+% end
+% 
+% 
+% end
+
+function result_img = Bicubic(origin_img, result_img, origin_size, target_size, scale, type)
+
+[oh,ow,od] = size(origin_img);
+zmf = scale; %缩放因子
+
+% initial target image TI
+th = round(oh*zmf);
+tw = round(ow*zmf);
+
+% add original image with 2 rows and 2 cols
+% expand the border to prevent calculation overflow
+a = origin_img(1,:,:); b = origin_img(oh,:,:);
+temp_I = [a;a;origin_img;b;b];
+c = temp_I(:,1,:); d = temp_I(:,ow,:);
+FI = [c,c,temp_I,d,d];
+
+% fill target image with new pixels
+for w = 1:tw
+    j = floor(w/zmf)+2; v = rem(w,zmf)/zmf;
+    for h = 1:th
+        i = floor(h/zmf)+2;  u = rem(h,zmf)/zmf; 
+        A = [s(u+1),s(u),s(u-1),s(u-2)];
+        C = [s(v+1);s(v);s(v-1);s(v-2)];
+        for d = 1:od   % image's 3 channels    
+            try
+                B = double(FI(i-1:i+2,j-1:j+2,d));
+                result_img(h,w,d) = (A*B*C);    
+            end
+        end
+    end
+end
+
+
+end
+
+
+% 插值核函数
+function w = s(wx)
+    wx = abs(wx);
+    if wx<1
+        w = 1 - 2*wx^2 + wx^3;
+    elseif wx>=1 && wx<2
+        w = 4 - 8*wx + 5*wx^2 - wx^3;
+    else
+        w = 0;
+
+    end
+end
+
+function A=sw(w1) 
+
+w=abs(w1); 
+if w<1 && w>=0 A =1-2*w^2+w^3; 
+elseif w>=1 && w<2 A=4-8*w+5*w^2-w^3; 
+else A=0; 
+end
+
+end
+
+% ======================== bicubic ================================ %
 
 
 
