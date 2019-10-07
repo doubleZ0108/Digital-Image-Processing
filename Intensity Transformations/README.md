@@ -25,3 +25,33 @@
 **反转**
 
 <img src="ScreenShots/Negatives/result.png" alt="result" style="zoom:50%;" />
+
+------
+
+## 门限 | Thresholding
+
+- **公式：**
+  $$
+  s = \left\{\begin{array}{1}{1, r > threshold} \\ 0, otherwise\end{array}\right.
+  $$
+
+- **库函数：**
+
+  ```matlab
+  % 定义门限值，注意范围是0～1
+  threshold = 0.5;
+  J = im2bw(I, threadhold);
+  ```
+
+- **用处：**将感兴趣的物体从背景中孤立出来 -> 分割
+
+**原图**
+
+<img src="ScreenShots/Thresholding/origin.jpg" alt="origin" style="zoom:50%;" />
+
+**门限**（只将花主体提取出来）
+
+<img src="ScreenShots/Thresholding/result.png" alt="result" style="zoom:50%;" />
+
+------
+
