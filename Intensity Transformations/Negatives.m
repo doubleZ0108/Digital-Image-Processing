@@ -2,7 +2,6 @@ clear
 clc
 
 I = imread('ScreenShots/Negatives/origin.png');
-[width, height] = size(I);
 
 %% 直接对每个像素操作（自己写的）
 
@@ -16,14 +15,10 @@ I = imread('ScreenShots/Negatives/origin.png');
 
 %% 直接进行矩阵运算
 negatived_I = 255 - I;
-figure;
-imshow(negatived_I, []);
 
 
 %% imcomplement库函数
 J = imcomplement(I);
-figure;
-imshow(J, []);
 
 
 
