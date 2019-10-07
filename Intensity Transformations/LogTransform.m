@@ -1,7 +1,7 @@
 clear
 clc
 
-I = imread('ScreenShots/LogTramsform/origin.png');
+I = imread('ScreenShots/Log Transformations/origin.png');
 
 range = getrangefromclass(I);
 largest = range(2);
