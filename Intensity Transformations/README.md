@@ -49,9 +49,22 @@
 
 <img src="ScreenShots/Thresholding/origin.jpg" alt="origin" style="zoom:50%;" />
 
-**门限**（只将花主体提取出来）
+**门限**（只将🌺 主体提取出来）
 
 <img src="ScreenShots/Thresholding/result.png" alt="result" style="zoom:50%;" />
 
 ------
 
+## Log变换 | Log Transformations
+
+- **公式：**`s = c * log(1 + r)`
+  - `c = 255/log(1 + 255)`时，保持刻度一致
+- **用处：**扩展黑像素，压缩白像素（*<u>想观察的信息隐藏在黑色中</u>*）
+
+**原图**
+
+<img src="ScreenShots/LogTramsform/origin.png" alt="origin" style="zoom:50%;" />
+
+**Log变换**
+
+<img src="ScreenShots/LogTramsform/result.png" alt="result" style="zoom:50%;" />
