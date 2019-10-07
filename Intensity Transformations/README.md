@@ -63,8 +63,39 @@
 
 **原图**
 
-<img src="ScreenShots/LogTramsform/origin.png" alt="origin" style="zoom:50%;" />
+<img src="ScreenShots/Log Transformations/origin.png" alt="origin" style="zoom:50%;" />
 
 **Log变换**
 
-<img src="ScreenShots/LogTramsform/result.png" alt="result" style="zoom:50%;" />
+<img src="ScreenShots/Log Transformations/result.png" alt="result" style="zoom:50%;" />
+
+------
+
+## γ变换 | Gamma Transformations
+
+- **公式：**$s = c * r^γ$
+- **用处：**色彩校正
+  - Gamma变换不仅会改变亮度，而且会改变rgb的比率
+
+### 图像过暗
+
+**原图**
+
+<img src="ScreenShots/Gamma Transformations/toodark.png" alt="toodark" style="zoom:50%;" />
+
+**γ变换**
+
+![result_dark](ScreenShots/Gamma Transformations/result_dark.png)
+
+### 图像过亮
+
+**原图**
+
+<img src="ScreenShots/Gamma Transformations/toobright.png" alt="toobright" style="zoom:50%;" />
+
+**γ变换**
+
+![result_bright](ScreenShots/Gamma Transformations/result_bright.png)
+
+------
+
