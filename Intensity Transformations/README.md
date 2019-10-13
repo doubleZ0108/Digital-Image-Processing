@@ -114,7 +114,7 @@
 
 - **函数图像：**
 
-  <img src="ScreenShots/Contrast Stretching/growth_function_figure.png" alt="image-20191012174901680" style="zoom:50%;" />
+  <img src="ScreenShots/Contrast Stretching/growth_function_figure.png" alt="image-20191012174901680" style="zoom: 33%;" />
 
 - **函数分析：**
 
@@ -161,7 +161,7 @@
   s = a ./ (1 + (a*0.5./r).^E);
   ```
 
-  <img src="ScreenShots/Contrast Stretching/growth_model.png" alt="growth_model" style="zoom:50%;" />
+  <img src="ScreenShots/Contrast Stretching/growth_model.png" alt="growth_model" style="zoom: 33%;" />
 
 ------
 
@@ -169,7 +169,7 @@
 
 - **函数模型：**
 
-  <img src="ScreenShots/Contrast Stretching/PieceWice_model.png" alt="PieceWice_model" style="zoom:50%;" />
+  <img src="ScreenShots/Contrast Stretching/PieceWice_model.png" alt="PieceWice_model" style="zoom: 33%;" />
 
 **原图**
 
@@ -181,12 +181,32 @@
 
 **原图**
 
-<img src="ScreenShots/Contrast Stretching/origin2.png" alt="origin2" style="zoom:67%;" />
+<img src="ScreenShots/Contrast Stretching/origin2.png" alt="origin2" style="zoom: 50%;" />
 
 **对比度拉伸**
 
-<img src="ScreenShots/Contrast Stretching/target2.png" alt="target2" style="zoom:67%;" />
+<img src="ScreenShots/Contrast Stretching/target2.png" alt="target2" style="zoom: 33%;" />
 
 ------
 
 ### 灰度级分层 ｜ Intensity Level Slicing
+
+**特征增强：**突出图像中特定灰度级范围的亮度
+
+- 类型
+
+  - 将感兴趣的范围变成白色，其他灰度值变为黑色（二值图像）
+
+    <img src="ScreenShots/Intensity Level Slicing/type1.png" alt="type1" style="zoom: 33%;" />
+
+  - 将感兴趣的范围变亮（或变暗），保持图像其他灰度级不变
+
+    <img src="ScreenShots/Intensity Level Slicing/type2.png" alt="type2" style="zoom: 33%;" />
+
+**原图**
+
+<img src="ScreenShots/Intensity Level Slicing/origin.png" alt="origin" style="zoom:50%;" />
+
+**灰度级分层**
+
+![target](ScreenShots/Intensity Level Slicing/target.png)
