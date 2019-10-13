@@ -173,19 +173,19 @@
 
 **原图**
 
-![origin1](ScreenShots/Contrast Stretching/origin1.png)
+<img src="ScreenShots/Contrast Stretching/origin1.png" alt="origin1" style="zoom:67%;" />
 
 **对比度拉伸**
 
-![target1](ScreenShots/Contrast Stretching/target1.png)
+<img src="ScreenShots/Contrast Stretching/target1.png" alt="target1" style="zoom:67%;" />
 
 **原图**
 
-![origin2](ScreenShots/Contrast Stretching/origin2.png)
+<img src="ScreenShots/Contrast Stretching/origin2.png" alt="origin2" style="zoom:67%;" />
 
 **对比度拉伸**
 
-![target2](ScreenShots/Contrast Stretching/target2.png)
+<img src="ScreenShots/Contrast Stretching/target2.png" alt="target2" style="zoom:67%;" />
 
 ------
 
