@@ -189,3 +189,4 @@
 
 ------
 
+### 灰度级分层 ｜ Intensity Level Slicing

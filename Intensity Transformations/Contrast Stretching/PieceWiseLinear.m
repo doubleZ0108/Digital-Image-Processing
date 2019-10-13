@@ -2,14 +2,11 @@ clear;
 clc;
 
 I = imread('ScreenShots/Contrast Stretching/origin2.png');
-[width, height,type] = size(I);
 
 x1 = 100; y1 = 30;
 x2 = 150; y2 = 100;
 
 J = PieceWiseLineraFunction(I(:,:,1), [x1,y1],[x2,y2]);
-J = reshape(J, [width, height]);      % 将运算后得到的矩阵变形成原图片尺寸
-
 
 %% 函数图像
 % figure;
@@ -37,6 +34,9 @@ L3 = x>x2 & x<=255;
 y(L1) = k1.*x(L1)+b1;
 y(L2) = k2.*x(L2)+b2;
 y(L3) = k3.*x(L3)+b3;
+
+[width, height,type] = size(x);
+y = reshape(y, [width, height]);     % 将运算后得到的矩阵变形成原图片尺寸
 
 end
 
