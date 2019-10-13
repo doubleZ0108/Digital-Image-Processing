@@ -85,7 +85,7 @@
 
 **γ变换**
 
-![result_dark](ScreenShots/Gamma Transformations/result_dark.png)
+<img src="ScreenShots/Gamma Transformations/result_dark.png" alt="result_dark" style="zoom:150%;" />
 
 ### 图像过亮
 
@@ -95,7 +95,7 @@
 
 **γ变换**
 
-![result_bright](ScreenShots/Gamma Transformations/result_bright.png)
+<img src="ScreenShots/Gamma Transformations/result_bright.png" alt="result_bright" style="zoom:150%;" />
 
 ------
 
@@ -209,4 +209,44 @@
 
 **灰度级分层**
 
-![target](ScreenShots/Intensity Level Slicing/target.png)
+<img src="ScreenShots/Intensity Level Slicing/target.png" alt="target" style="zoom:150%;" />
+
+------
+
+### Bit Plane Slicing
+
+- **原理：**
+
+  - 高阶bit-plane包含大多数重要的视觉信息
+  - 低阶bit-plane包含精细的细节
+
+- **库函数：**
+
+  - `bitget(A, bit)`: 返回整数A位于位置bit的位值
+  - `bitshift(A, k)`: 返回向左偏移k位的A，相当于乘以2k
+  - `bitset(A, bit, v)`: 将A的位置bit的值设为v
+
+  ```matlab
+  %% 分层
+  for k=1:8
+      cells{k} = bitshift(bitget(I, k), k-1);
+  end
+  
+  %% 重建
+  for k=6:8
+      J = bitset(J, k, bitget(cells{k}, k));
+  end
+  ```
+
+**分层**
+
+<img src="ScreenShots/Bit Plane/BitPlane.png" alt="image-20191013140156727" style="zoom:150%;" />
+
+**压缩 & 重建**
+
+1. 原图
+2. 6～8位构建
+3. 5～8位构建：减少了50%的存储量
+4. 4～8位构建
+
+<img src="ScreenShots/Bit Plane/Rebuild.png" alt="image-20191013140932321" style="zoom:150%;" />
