@@ -1,10 +1,10 @@
-# 直方图
+# 直方图 | Histogram
 
 [TOC]
 
 ------
 
-## 直方图计算
+## 直方图计算 | Histogram Computation
 
 - **公式：**
 
@@ -22,7 +22,7 @@ $$
 
 ------
 
-## 直方图均衡化
+## 直方图均衡化 | Histogram Equalization
 
 - **公式：**
   $$
