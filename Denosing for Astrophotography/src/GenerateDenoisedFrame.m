@@ -10,11 +10,11 @@ result_average_name = 'hw1_sky_2_frame_average.png';
 vidobj = VideoReader([video_path,video_name]); 
 
 %% loop
-frame_average_last = im2double(read(vidobj, 1));
+frame_average_last = im2double(read(vidobj, 1));    % first frame of the video
 for t=2:30
     frame_now = im2double(read(vidobj, t));
-    frame_average = (t-1)/t * frame_average_last + 1/t * frame_now;
-    frame_average_last = frame_average;
+    frame_average = (t-1)/t * frame_average_last + 1/t * frame_now;     % weighted summation
+    frame_average_last = frame_average;     % update the fresh frame
 end
 
 figure;
@@ -31,10 +31,15 @@ imshow(frame_average, []);
 % imshow(result);
 
 function frame = f(t, vidobj)
+% return the "t"th frame of the video input
+
 frame = im2double(read(vidobj, t));
+
 end
 
 function frame = f_a(t, vidobj)
+% return the "t"th running average of the frames f_t 
+% without frame alignment
 
 if t==1
     frame = f(1, vidobj);
