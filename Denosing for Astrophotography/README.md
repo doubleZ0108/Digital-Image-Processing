@@ -211,7 +211,52 @@ The algorithm calculates the mean squared differences over a set of horizontal a
 
 #### Experimental Effect
 
+From the images above we can see clearly that this algorithm can not only denoising, but can also reserve the sharp detail of origin image.
 
+The algorithm use the shifting frames in which the features are very close to the last modified frame to average the noise.
+
+But during my experiment, I still have to question. Here, I want to state my own viewpoint:
+
+- Firstly, the algorithm is inefficient, because it should calculate all the shifted frame to get the smallest mean squared difference, hence, it hold high time complexity. But during my experiment, I console all the "best choice" which mean the frame get the smallest Align(). They are listed here:
+
+  | t    | dx   | dy   |
+  | ---- | ---- | ---- |
+  | 2    | 0    | 0    |
+  | 3    | 0    | 1    |
+  | 4    | 0    | 1    |
+  | 5    | -1   | 2    |
+  | 6    | -1   | 2    |
+  | 7    | -1   | 3    |
+  | 8    | -1   | 3    |
+  | 9    | -2   | 4    |
+  | 10   | -2   | 4    |
+  | 11   | -2   | 5    |
+  | 12   | -2   | 5    |
+  | 13   | -3   | 6    |
+  | 14   | -3   | 6    |
+  | 15   | -3   | 7    |
+  | 16   | -3   | 7    |
+  | 17   | -4   | 8    |
+  | 18   | -4   | 8    |
+  | 19   | -4   | 9    |
+  | 20   | -4   | 9    |
+  | 21   | -5   | 10   |
+  | 22   | -5   | 10   |
+  | 23   | -5   | 10   |
+  | 24   | -5   | 10   |
+  | 25   | -5   | 10   |
+  | 26   | -6   | 10   |
+  | 27   | -6   | 10   |
+  | 28   | -6   | 10   |
+  | 29   | -6   | 10   |
+  | 30   | -6   | 10   |
+
+  - t: current frame
+  - dx: x offset of the shifted frame which hold the smallest mean squared differences
+  - dy: y offset of the shifted frame which hold the smallest mean squared differences
+  - We can find that dx is gradually decrease, and dy increase. Hence, I consider that the best choice of next frame hold the smaller ds and larger dy of the sky2, we can store last offset of x and y, and loop before the storage value. It will reduce a lot of calculations.
+
+- Secondly, the result images still hold some details blurred. In my own viewpoint, I guess it may because this algorithm is actually still an operation to reduce the moised by averaging the frames. On the condition that we use averaging operation to reduce noises, it will make the frames blurred.
 
 
 
