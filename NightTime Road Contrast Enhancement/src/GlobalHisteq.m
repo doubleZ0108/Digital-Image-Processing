@@ -23,22 +23,26 @@ for k=1:M
 end
 
 function J = myhisteq(I)
+% global histogram equalization
 
 [M,N] = size(I);
 
 s = zeros(1, 256);
-[counts, pixels] = imhist(I);   % [每个像素的个数 | 像素值(0～255)]
+[counts, pixels] = imhist(I);   % [Number of pixels per pixel | Pixel value (0~255)]
 
 sum_count = 0;
 for k=0:255
     
-    sum_count = sum_count + counts(k + 1, 1);   % 采用增量法统计求和值
+    sum_count = sum_count + counts(k + 1, 1);   % use incremental idea
     
     s(1,k+1) = round(255/(M*N)*sum_count);
 end
 
+% convert the grayscale in the original image to the grayscale in the new image
+J = s(1,I+1);
 
-J = s(1,I+1);   % 将原图中的灰度转换为新图像中的灰度级
+% convert the shape to origin shape
 J = uint8(reshape(J, [M, N]));
+
 end
 
