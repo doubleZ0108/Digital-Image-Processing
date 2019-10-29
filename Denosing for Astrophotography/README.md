@@ -10,21 +10,7 @@ Amateur astrophotographers often set up static cameras pointed toward particular
 
 ------
 
-## 2. Development Environment
-
-- **Development Environment:** macOS Mojave 10.14.6
-- **Development Software:** MATLAB_R2019a
-- **Development Language:** Matlab
-
-------
-
-## 3. How To Run
-
-
-
-------
-
-## 4. Experiment
+## 2. Experiment
 
 ### a) Running average of the frames without frame alignment
 
@@ -209,6 +195,30 @@ The algorithm calculates the mean squared differences over a set of horizontal a
 
 #### Experimental Result
 
+sky1 without shifting
+
+<img src="ScreenShots/hw1_sky_1_frame_average.png" alt="hw1_sky_1_frame_average" style="zoom:50%;" />
+
+sky1 shift with n=3
+
+<img src="ScreenShots/hw1_sky_1_frame_shift_3.png" alt="hw1_sky_1_frame_shift_3" style="zoom:50%;" />
+
+sky1 shift with n=10
+
+<img src="ScreenShots/hw1_sky_1_frame_shift_10.png" alt="hw1_sky_1_frame_shift_10" style="zoom:50%;" />
+
+sky2 without shifting
+
+<img src="ScreenShots/hw1_sky_2_frame_average.png" alt="hw1_sky_2_frame_average" style="zoom:50%;" />
+
+sky2 shift with n=3
+
+<img src="ScreenShots/hw1_sky_2_frame_shift_3.png" alt="hw1_sky_2_frame_shift_3" style="zoom:50%;" />
+
+sky2 shift with n=10
+
+<img src="ScreenShots/hw1_sky_2_frame_shift_10.png" alt="hw1_sky_2_frame_shift_10" style="zoom:50%;" />
+
 #### Experimental Effect
 
 From the images above we can see clearly that this algorithm can not only denoising, but can also reserve the sharp detail of origin image.
@@ -251,35 +261,9 @@ But during my experiment, I still have to question. Here, I want to state my own
   | 29   | -6   | 10   |
   | 30   | -6   | 10   |
 
-  - t: current frame
-  - dx: x offset of the shifted frame which hold the smallest mean squared differences
-  - dy: y offset of the shifted frame which hold the smallest mean squared differences
+  - `t`: current frame
+  - `dx`: x offset of the shifted frame which hold the smallest mean squared differences
+  - `dy`: y offset of the shifted frame which hold the smallest mean squared differences
   - We can find that dx is gradually decrease, and dy increase. Hence, I consider that the best choice of next frame hold the smaller ds and larger dy of the sky2, we can store last offset of x and y, and loop before the storage value. It will reduce a lot of calculations.
 
 - Secondly, the result images still hold some details blurred. In my own viewpoint, I guess it may because this algorithm is actually still an operation to reduce the moised by averaging the frames. On the condition that we use averaging operation to reduce noises, it will make the frames blurred.
-
-
-
-------
-
-## 6. About the Author
-
-| Item            | Info                     |
-| --------------- | ------------------------ |
-| **Name**        | Zhe Zhang(张喆)          |
-| **ID**          | 1754060                  |
-| **Adviser**     | Prof. Qingjiang Shi      |
-| **Course Name** | Digital Image Processing |
-| **Course Time** | Tue. 2-4 [1-17]          |
-| **Email**       | doubleZ0108@163.com      |
-
-------
-
-## 7. Project Structure
-
-```
-
-```
-
-------
-
