@@ -6,7 +6,7 @@ imgs_name = ['hw1_dark_road_1.jpg';'hw1_dark_road_2.jpg';'hw1_dark_road_3.jpg'];
 result_path = 'ScreenShots/Gamma Nonlinearity Mapping/';
 [M,N] = size(imgs_name);
 
-for k=3:3
+for k=1:M
     img_name = imgs_name(k,:);
     I = imread([img_path, img_name]);
     
@@ -20,10 +20,13 @@ end
 
 
 function J = GammaNonlinearityMapping(I, gamma)
+% use gamma-onlinearity mapping to perform contrast enhancement
 
+% keep the coordinate scale consistent
 c = 255/(255^gamma);
 % c = 1;
 
+% gamma transformation
 J = uint8(c*double(I).^gamma);
 
 % x=0:0.1:255;
