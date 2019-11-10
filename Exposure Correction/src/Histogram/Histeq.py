@@ -7,11 +7,8 @@
 
 @create: 2019/11/09 
 '''
-from cv2 import cv2
 
-from src.Histogram.GenerateHistogram import generate_histogram
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def get_histogram(img):
@@ -26,7 +23,7 @@ def get_histogram(img):
     histogram = {}
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
-            k = img[i][j][0]
+            k = img[i][j]
             if k in histogram:
                 histogram[k] += 1
             else:
@@ -65,23 +62,6 @@ def histeq(img):
 
     for k in range(img.shape[0]):
         for l in range(img.shape[1]):
-            new_img[k][l] = pr[img[k][l][0]]
+            new_img[k][l] = pr[img[k][l]]
 
     return new_img
-
-
-if __name__ == '__main__':
-    img = cv2.imread('../../Resources/Histogram/origin.png',0)
-    # new_img = histeq(img)
-    new_img = cv2.equalizeHist(img)
-
-    plt.figure()
-    plt.imshow(img, cmap='Greys_r')
-
-    plt.figure()
-    plt.imshow(new_img, cmap='Greys_r')
-
-    generate_histogram(img)
-    generate_histogram(new_img)
-
-    plt.show()
