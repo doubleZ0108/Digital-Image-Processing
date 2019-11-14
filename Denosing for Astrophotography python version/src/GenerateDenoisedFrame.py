@@ -1,7 +1,7 @@
 '''
 @program: GenerateDenoisedFrame.py
 
-@description: 
+@description: 对视频对帧进行平滑去噪
 
 @author: doubleZ
 
@@ -13,28 +13,48 @@ import imageio
 import skimage
 import numpy as np
 
+def show_frame(frame, name):
+    '''
+    @description: 绘制帧
 
-if __name__ == '__main__':
-    # 视频的绝对路径
+    @params frame: 帧数据ndaray
+    @params name: 图像对名字
+
+    @return : null
+    '''
+    img_now = pylab.figure()
+    img_now.suptitle(name)
+    pylab.imshow(frame)
+
+
+def denoise_for_video():
+    # 视频的相对路径
     filename = '../Resources/hw1_sky_1.avi'
 
-    # 可以选择解码工具
+    # 选择ffmpeq作为解码工具
     vidobj = imageio.get_reader(filename, 'ffmpeg')
 
+    # 提取视频对各帧并进行去噪处理
     for t, frame_now in enumerate(vidobj):
-        if t == 0:    # 读取第一帧
+        if t == 0:  # 读取第一帧
             frame_average_last = skimage.img_as_float(frame_now).astype(np.float64)
             continue
+
         frame_now = skimage.img_as_float(frame_now).astype(np.float64)  # 提取下一帧
-        frame_average = (t - 1) / t * frame_average_last + 1 / t * frame_now  # weighted summation
-        frame_average_last = frame_average  # update the fresh frame
+        frame_average = (t - 1) / t * frame_average_last + 1 / t * frame_now  # 将之前对处理结果和现有帧加权求和
+        frame_average_last = frame_average  # 更新处理结果
+
+    return [frame_now, frame_average]
 
 
-    img_now = pylab.figure()
-    img_now.suptitle('frame now')
-    pylab.imshow(frame_now)
+def main():
+    [frame_now, frame_average] = denoise_for_video()
 
-    img_average = pylab.figure()
-    img_average.suptitle('frame average')
-    pylab.imshow(frame_average)
+    show_frame(frame_now, "frame now")
+    show_frame(frame_average, "frame average")
+
     pylab.show()
+
+
+if __name__ == '__main__':
+    main()
