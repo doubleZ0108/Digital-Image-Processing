@@ -34,7 +34,36 @@
 
 ## 项目结构
 
-
+```
+.
+├── README.md
+├── Resources
+│   ├── GammaTransform
+│   │   ├── rgb_figure1.png
+│   │   ├── rgb_figure2.png
+│   │   ├── toobright.png
+│   │   └── toodark.png
+│   └── Histogram
+│       ├── origin.png
+│       ├── origin2.png
+│       ├── rgb_figure1.png
+│       └── rgb_figure2.png
+├── doc
+│   ├── Gamma变换项目文档.pdf
+│   └── 直方图均衡化项目文档.pdf
+└── src
+    ├── GammaTransform
+    │   ├── GammaTransform.py
+    │   ├── GammaTransformNormal.py
+    │   ├── ProcessBrightImage.py
+    │   ├── ProcessDarkImage.py
+    │   └── ProcessRGB.py
+    └── Histogram
+        ├── GenerateHistogram.py
+        ├── Histeq.py
+        ├── ProcessGrayscale.py
+        └── ProcessRGB.py
+```
 
 ------
 
