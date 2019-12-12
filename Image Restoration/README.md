@@ -4,6 +4,17 @@
 
 ------
 
+## 图像退化-复原模型
+
+- degraded -- restore --> restoration
+
+- **退化:** degradation function + aditive noise
+  $$
+  g(x,y) = h(x,y) \bigotimes f(x,y) + \eta(x,y)
+  $$
+
+------
+
 ## Mean Filter | 均值滤波器
 
 ### Arithmetic Mean | 算数均值
@@ -107,4 +118,6 @@ $$
 $$
 \hat{f}(x,y) = \frac{1}{MN-d}\sum \limits_{(s,t)\in S_{xy}}g_r(s,t)
 $$
+
+
 
