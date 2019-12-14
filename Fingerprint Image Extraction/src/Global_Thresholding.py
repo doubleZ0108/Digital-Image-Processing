@@ -86,8 +86,11 @@ def Global_Thresholding(img, T):
 
 if __name__ == '__main__':
     image = cv.imread("../Resources/fingerprint.jpg")
+
     grayimage = rgb2gray(image)
+
     thresholdimage = Global_Thresholding(grayimage,127)
+
     cv.imshow("image", image)
     cv.imshow("grayimage", grayimage)
     cv.imshow("thresholdimage", thresholdimage)

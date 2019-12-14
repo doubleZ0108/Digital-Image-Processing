@@ -17,7 +17,7 @@ def Basic_Thresholding(img):
 
     :return : 阈值处理后的图像
     '''
-    blurred = cv2.GaussianBlur(img, (5, 5), 0)
+    blurred = cv2.GaussianBlur(img, (5, 5), 0)      # 高斯滤波降噪
     (T, thresh_inv) = cv2.threshold(blurred, 127, 255, cv2.THRESH_BINARY_INV)
     return thresh_inv
 

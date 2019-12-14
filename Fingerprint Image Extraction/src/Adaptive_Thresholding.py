@@ -25,9 +25,12 @@ def Adaptive_Thresholding(image):
     blurred = cv2.medianBlur(gray, 1)       # 高斯滤波降噪
 
     (T, thresh) = cv2.threshold(blurred, 127, 255, cv2.THRESH_BINARY)   # 简单阈值处理
+
     th1 = cv2.adaptiveThreshold(gray, 255,
                                 cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)   # 自适应阈值处理
+
     th1_1 = cv2.medianBlur(th1, 5)      # adaptive mean thresholding
+
     th2 = cv2.adaptiveThreshold(gray, 255,
                                 cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)   # adaptive gaussian thresholding
 
