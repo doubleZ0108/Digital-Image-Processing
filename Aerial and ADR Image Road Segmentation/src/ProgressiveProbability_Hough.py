@@ -1,7 +1,7 @@
 '''
 @program: ProgressiveProbability_Hough.py
 
-@description: 
+@description: 渐进概率式霍夫变换提取机场跑道线
 
 @author: doubleZ
 
@@ -11,8 +11,14 @@
 import cv2
 import numpy as np
 
-# 渐进概率式霍夫变换
 def ProgressiveProbability_Hough(img):
+    '''
+    :description: 渐进概率式霍夫变换
+
+    :param : 原始图像
+
+    :return : 显示用渐进概率式霍夫变换提取的直线边缘图像
+    '''
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(gray, 50, 250)
     lines = cv2.HoughLinesP(edges, 1, np.pi/180, 30, minLineLength=60, maxLineGap=10)

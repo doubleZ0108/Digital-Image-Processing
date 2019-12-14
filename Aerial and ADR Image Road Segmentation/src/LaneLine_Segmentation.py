@@ -10,7 +10,6 @@
 
 import numpy as np
 import cv2 as cv
-import matplotlib.pyplot as plt
 
 # 灰度图转换
 def grayscale(image):
@@ -110,12 +109,18 @@ def draw_lines(image, lines, color=[255,0,0], thickness=2):
     cv.line(image, (right_x_top, right_y_top), (right_x_bottom, max_y), color, thickness)
 
 def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
+    '''
+    :description: 使用渐进概率式霍夫变换提取图像边缘
 
-    # rho：线段以像素为单位的距离精度
-    # theta : 像素以弧度为单位的角度精度(np.pi/180较为合适)
-    # threshold : 霍夫平面累加的阈值
-    # minLineLength : 线段最小长度(像素级)
-    # maxLineGap : 最大允许断裂长度
+    :param rho: 线段以像素为单位的距离精度
+    :param theta: 像素以弧度为单位的角度精度(np.pi/180较为合适)
+    :param threshold: 霍夫平面累加的阈值
+    :param min_line_len: 线段最小长度(像素级)
+    :param max_line_gap: 最大允许断裂长度
+
+    :return : 提取后的直线信息
+    '''
+
     lines = cv.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
     return lines
 

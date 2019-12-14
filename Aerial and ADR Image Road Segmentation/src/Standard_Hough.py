@@ -1,7 +1,7 @@
 '''
-@program: StandardHough.py
+@program: Standard_Hough.py
 
-@description: 
+@description: 标准霍夫边缘提取机场跑道线
 
 @author: doubleZ
 
@@ -11,8 +11,14 @@
 import cv2
 import numpy as np
 
-# 标准霍夫变换
-def StandardHough(img):
+def Standard_Hough(img):
+    '''
+    :description: 标准霍夫变换
+
+    :param : 原始图像
+
+    :return : 显示用标准霍夫变换提取的直线边缘图像
+    '''
     house = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 获取灰度图
     edges = cv2.Canny(house, 50, 200)
     lines = cv2.HoughLines(edges, 1, np.pi / 180, 260)  # 霍夫变换返回的就是极坐标系中的两个参数  rho和theta
@@ -38,4 +44,4 @@ def StandardHough(img):
 
 if __name__ == '__main__':
     img = cv2.imread('../Resources/track.png')
-    StandardHough(img)
+    Standard_Hough(img)
