@@ -31,11 +31,8 @@ if __name__ == "__main__":
     image_mask = cv2.bitwise_and(gray, gray, mask=thresh_inv)   # 在阈值处理后的图像上加掩膜
 
     cv2.imshow('original image', image)
-    cv2.imwrite('../Resources/original.png', image)
     cv2.imshow('thresh_inv', thresh_inv)
-    cv2.imwrite('../Resources/thresh_inv.png', thresh_inv)
     cv2.imshow('image_mask', image_mask)
-    cv2.imwrite('../Resources/image_mask.png', image_mask)
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()

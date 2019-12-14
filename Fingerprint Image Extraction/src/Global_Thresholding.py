@@ -1,5 +1,5 @@
 '''
-@program: Adaptive_Thresholding.py
+@program: Global_Thresholding.py
 
 @description: 基本全局阈值处理
 
@@ -54,7 +54,7 @@ def threshold(img, T):
     T0 = int((m1+m2)/2)   # 据公式计算新的阈值
     return T0
 
-def Adaptive_Thresholding(img, T):
+def Global_Thresholding(img, T):
     '''
     :description: 基本全局阈值处理
 
@@ -87,12 +87,9 @@ def Adaptive_Thresholding(img, T):
 if __name__ == '__main__':
     image = cv.imread("../Resources/fingerprint.jpg")
     grayimage = rgb2gray(image)
-    thresholdimage = Adaptive_Thresholding(grayimage,127)
+    thresholdimage = Global_Thresholding(grayimage,127)
     cv.imshow("image", image)
-    cv.imwrite("../Resources/image.png", image)
     cv.imshow("grayimage", grayimage)
-    cv.imwrite("../Resources/grayimage.png", grayimage)
     cv.imshow("thresholdimage", thresholdimage)
-    cv.imwrite("../Resources/thresholdimage.png", thresholdimage)
     cv.waitKey(0)
     cv.destroyAllWindows()
