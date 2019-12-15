@@ -119,5 +119,48 @@ $$
 \hat{f}(x,y) = \frac{1}{MN-d}\sum \limits_{(s,t)\in S_{xy}}g_r(s,t)
 $$
 
+------
 
+## Adaptive filter | 自适应滤波器
+
+### Adaptive Mean Filter | 自适应中值滤波器
+
+- **目标：**
+  - 去除Impulse noise
+  - smoothing other noise
+  - less blurring(reduce distortion)
+- **notation:**
+  - $z_{min}$: minimum grey level in $S_{xy}$
+  - $z_{max}$: maximum grey level in $S_{xy}$
+  - $z_{med}$: median of grey levels in $S_{xy}$
+  - $z_{xy}$: grey level at coordinates $(x,y)$
+  - $S_{max}$: maximum allowed size of $S_{xy}$
+- 随着脉冲密度的增大，需要更大的窗口消除Impulse噪声
+
+**算法**
+
+```
+Stage A:
+	A1 = z_med - z_min
+	A2 = z_med - z_max
+	
+	if A1>0 and A2<0:		//中点值不是噪声，median工作正常
+		go to Stage B
+	else:			//中间点还是impulse噪声
+		Increase the window_size
+		
+	if window_size <= S_max:
+		repeat Stage A
+	else:
+		Output z_med		//不能保证这个值不是脉冲
+
+Stage B:
+	B1 = z_xy - z_min
+	B2 = z_xy - z_max
+	
+	if B1>0 and B2<0:
+		Output z_xy		//不改变中间灰度级的点，减少图像的失真
+	else:
+		Output z_med	//中值滤波
+```
 
