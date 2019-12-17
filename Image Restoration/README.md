@@ -71,14 +71,21 @@ $$
 
 ordering{ranking} the value of the pixels contained in the image area encompassed by the filter
 
-### Mean | 中值
+### Median | 中值
 
 - less blurring the linear something filter
 - **单极或双级脉冲下效果尤其好**
+- 但是对于噪声密度非常大时无法去除干净（中值仍是噪声）
 
 $$
 \hat{f}(x,y) = \mathop{median}_{(s,t)\in S_{x,y}}\{g(s,t)\}
 $$
+
+```matlab
+medfilt2(salt_pepper_noise_img)
+```
+
+<img src="ScreenShots/Median.png" alt="image-20191217105731656" style="zoom:50%;" />
 
 ------
 
@@ -123,7 +130,7 @@ $$
 
 ## Adaptive filter | 自适应滤波器
 
-### Adaptive Mean Filter | 自适应中值滤波器
+### Adaptive Median Filter | 自适应中值滤波器
 
 - **目标：**
   - 去除Impulse noise
@@ -164,3 +171,8 @@ Stage B:
 		Output z_med	//中值滤波
 ```
 
+<img src="ScreenShots/AdaptiveMedian.png" alt="image-20191217110114754" style="zoom:50%;" />
+
+> 扩充图像的时候如果用0补边的话，滤波之后图像边缘处的噪声无法去除
+>
+> <img src="ScreenShots/AdaptiveMedian_0padding.png" alt="image-20191217110017691" style="zoom:50%;" />
