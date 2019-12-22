@@ -8,13 +8,25 @@
 
 **原图**
 
-<img src="Resources/demo.png" alt="demo" style="zoom:50%;" />
+<img src="Resources/origin.png" alt="demo" style="zoom:50%;" />
+
+<img src="ScreenShots/origin_histogram.png" alt="origin_histogram" style="zoom:50%;" />
 
 ------
 
 ## Gaussian | 高斯
 
-【叠加周期噪声后的图像 + 直方图📊】
+<img src="ScreenShots/gaussian.png" alt="gaussian" style="zoom: 50%;" />
+
+<img src="ScreenShots/gaussian_histogram.png" alt="gaussian_histogram" style="zoom:50%;" />
+
+------
+
+## Poisson | 柏松
+
+<img src="ScreenShots/poisson.png" alt="poisson" style="zoom:50%;" />
+
+<img src="ScreenShots/poisson_histogram.png" alt="poisson_histogram" style="zoom:50%;" />
 
 ------
 
@@ -46,7 +58,17 @@
 
 ### Salt & pepper noise | 椒盐
 
+<img src="ScreenShots/salt_and_pepper.png" alt="salt_and_pepper" style="zoom:50%;" />
 
+<img src="ScreenShots/salt_pepper_histogram.png" alt="salt_pepper_histogram" style="zoom:50%;" />
+
+------
+
+## Speckle | 斑点噪声
+
+<img src="ScreenShots/speckle.png" alt="speckle" style="zoom:50%;" />
+
+<img src="ScreenShots/speckle_histogram.png" alt="speckle_histogram" style="zoom:50%;" />
 
 ------
 
