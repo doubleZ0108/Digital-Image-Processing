@@ -84,7 +84,35 @@ $$
 
 ### Marr-Hildreth边缘检测器
 
+#### LoG(Laplacian of Gaussian) operator
 
+$$
+\nabla^{2} G_{\sigma}(x, y)=\left(\frac{x^{2}+y^{2}-2 \sigma^{2}}{\sigma^{4}}\right) \exp \left(-\frac{x^{2}+y^{2}}{2 \sigma^{2}}\right)
+$$
+
+- 图像的边缘是一阶导的极值，二阶导左右变号
+
+- 先用Gaussian平滑，再对平滑后的图像求二阶导
+
+  ```matlab
+  logFunction = fspecial('log', 51, 8)
+  ```
+
+#### DoG(LoG的近似)
+
+$$
+\operatorname{DoG}(x, y)=\frac{1}{2 \pi \sigma_{1}^{2}} \mathrm{e}^{-\frac{x^{2}+y^{2}}{2 \sigma_{1}^{2}}}-\frac{1}{2 \pi \sigma_{2}^{2}} \mathrm{e}^{-\frac{x^{2}+y^{2}}{2 \sigma_{2}^{2}}}
+$$
+
+- $\sigma1 > \sigma2$，通常取`1.6:1`
+
+#### 算法步骤
+
+1. Gaussian low-pass filter
+2. Laplacian
+3. zero-crossings
+   - 四个方向中至少有两个方向符号不一样
+   - 差异的绝对值超过pre-defined threshold
 
 ------
 
