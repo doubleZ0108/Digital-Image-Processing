@@ -117,3 +117,34 @@ $$
 ------
 
 ### Candy边缘检测器
+
+#### 算法步骤
+
+1. Gaussian Filter平滑图像
+
+2. 计算gradient magnitude和angle maps
+
+3. 非极大值抑制 non-maxima suppression
+
+   > check if gradient magnitude at (i,j) is local maximum along gradient direction
+   >
+   > 在梯度方向依次比较，如果它不比周围两点大，就把像素置为0
+
+   
+
+   ```
+   For each pixel (i,j)  do:
+   	if magn(i,j) < magn(i1,j1) or magn(i,j) < mag(i2,j2):
+   		In(i,j) = 0
+   	else
+   		In(i,j) = magn(i,j)
+   ```
+
+4. 双阈值处理和连通分析
+
+#### matlab实现
+
+```matlab
+edgeResult = edge(im, 'canny')
+```
+
