@@ -58,5 +58,23 @@ graythresh()			% Otsu's threshold
 
 ## Variable thresholding
 
+将图像分块，每块用不同的threshold
+$$
+T_{xy} = a\sigma_{xy} + bm_{xy}
+$$
 
+- $\sigma_{xy}$: 标准偏移
+- $m_{xy}$: 邻居内的均值
 
+1. 将图像变成一维（zigzag）
+
+2. 对每位计算local average(它和它前面的n-1个)作为threshold
+
+3. 重组图像回二维，把threshold map也组成二维
+   $$
+   g(x, y)=\left\{\begin{array}{l}{1, \text { if } f(x, y)>K \cdot m(x, y)} \\ {0, \text { otherwise }}\end{array}\right.
+   $$
+   
+
+- 常用于处理文稿
+- 扫描线以之字形逐行进行，减少光照偏差
