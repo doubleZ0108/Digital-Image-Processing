@@ -148,3 +148,29 @@ $$
 edgeResult = edge(im, 'canny')
 ```
 
+------
+
+### Hough变换
+
+**voting schemes**
+
+让尽可能多的点舒服，每个features对所有models投票，选出最好的
+
+参数空间：(x, y) --> (m, b) --> ($\rho$, $\theta$)
+
+1. （对于n维空间情况，首先确定参数空间大小）
+
+2. ```matlab
+   for 每条edge上的point(x,y)
+   	for theta = -90 to 90
+   		theta = gradient orientation at (x,y)
+   		rho = x*cos(theta) + y*sin(theta)
+   		H(theta, rho) = H(theta, rho) + 1		% 对(theta, rho)空间的一点投票，相当于对某条直线投了一票
+   	end
+   end
+   ```
+
+3. 寻找$H(\theta, \rho)$是local maximum时对应的$(\theta, \rho)$
+
+   目标直线为$\rho = xcos\theta + ysin\theta$
+
