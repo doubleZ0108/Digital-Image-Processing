@@ -42,7 +42,34 @@ $$
 
 ## Optimum Statistical Classifiers
 
+**把x错判成$\omega_j$导致的平均loss**
+$$
+r_{j}(x)=\sum_{k=1}^{W} L_{k j} p\left(\omega_{k} / x\right) \\
+=\frac{1}{p(x)} \sum_{k=1}^{W} L_{k j} p\left(x / \omega_{k}\right) p\left(\omega_{k}\right) \\ =\sum_{k=1}^{W} L_{k j} p\left(x / \omega_{k}\right) p\left(\omega_{k}\right)
+$$
 
+### Gaussian Pattern Class
+
+$$
+p\left(x / \omega_{j}\right)=\frac{1}{(2 \pi)^{n / 2}\left|C_{j}\right|^{1 / 2}} e^{-\frac{1}{2}\left(x-m_{j}\right)^{T} C_{j}^{-1}\left(x-m_{j}\right)}
+$$
+
+- $m_j = E_j{x}$ 均值
+- $C_j = E_j{(x-m_j)(x-m_j)^T}$ 协方差
+
+------
+
+- $P(\omega_i) = \frac{1}{\omega}, C_i = \sigma^2I$
+  $$
+  d_i(x)=\frac{1}{2\sigma^2}||x-\omega^2||^2
+  $$
+
+  - $P(\omega_i) = \frac{1}{\omega}, C_i = C$ 	考虑了协方差
+
+  $$
+  d_i(x) = \frac{1}{2}(x-m_i)^TC_i^{-1}(x-m_i) \\
+   = x^TC_i^{-1}m_i-\frac{1}{2}m_i^TC_i^{-1}m_i
+  $$
 
 ------
 
