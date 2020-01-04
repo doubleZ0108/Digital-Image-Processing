@@ -160,7 +160,9 @@ edgeResult = edge(im, 'canny')
 
 1. （对于n维空间情况，首先确定参数空间大小）
 
-2. ```matlab
+2. 初始化H为零阵
+
+3. ```matlab
    for 每条edge上的point(x,y)
    	for theta = -90 to 90
    		theta = gradient orientation at (x,y)
@@ -170,7 +172,7 @@ edgeResult = edge(im, 'canny')
    end
    ```
 
-3. 寻找$H(\theta, \rho)$是local maximum时对应的$(\theta, \rho)$
+4. 寻找$H(\theta, \rho)$是local maximum时对应的$(\theta, \rho)$
 
    目标直线为$\rho = xcos\theta + ysin\theta$
 
