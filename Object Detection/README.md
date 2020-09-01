@@ -1,10 +1,16 @@
 # 目标检测
 
-[TOC]
+* [Recognition Based On Decision-Theoretic Methods](#recognition-based-on-decision-theoretic-methods)
+* [Matching](#matching)
+   * [Minimum Distance Classifier | 最小距离分类器](#minimum-distance-classifier--最小距离分类器)
+   * [Coorelation | 相关](#coorelation--相关)
+* [Optimum Statistical Classifiers](#optimum-statistical-classifiers)
+   * [Gaussian Pattern Class](#gaussian-pattern-class)
+* [Neural Networks](#neural-networks)
 
 ------
 
-# Recognition Based On Decision-Theoretic Methods
+## Recognition Based On Decision-Theoretic Methods
 
 ## Matching
 

@@ -1,8 +1,15 @@
 # 噪声类型
 
-
-
-[TOC]
+* [Gaussian | 高斯](#gaussian--高斯)
+* [Poisson | 柏松](#poisson--柏松)
+* [Rayleigh | 瑞利](#rayleigh--瑞利)
+* [Erlang(Gamma) | 爱尔兰](#erlanggamma--爱尔兰)
+* [Exponential | 指数](#exponential--指数)
+* [Uniform | 均匀](#uniform--均匀)
+* [Impulse | 脉冲](#impulse--脉冲)
+   * [Salt &amp; pepper noise | 椒盐](#salt--pepper-noise--椒盐)
+* [Speckle | 斑点噪声](#speckle--斑点噪声)
+* [周期噪声](#周期噪声)
 
 ------
 

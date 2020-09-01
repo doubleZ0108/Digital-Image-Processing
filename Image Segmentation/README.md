@@ -2,7 +2,10 @@
 
 Segmentation based on thresholding
 
-[TOC]
+* [Basic global thresholding](#basic-global-thresholding)
+   * [聚类分割](#聚类分割)
+* [Otsu's optimum global thresholding](#otsus-optimum-global-thresholding)
+* [Variable thresholding](#variable-thresholding)
 
 ------
 

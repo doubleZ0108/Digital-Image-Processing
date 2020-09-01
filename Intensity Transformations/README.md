@@ -1,6 +1,17 @@
 # 灰度变换函数 | Basic Intensity Transformation Functions
 
-[TOC]
+* [图像反转 | Image Negatives](#图像反转--image-negatives)
+* [门限 | Thresholding](#门限--thresholding)
+* [Log变换 | Log Transformations](#log变换--log-transformations)
+* [γ变换 | Gamma Transformations](#γ变换--gamma-transformations)
+   * [图像过暗](#图像过暗)
+   * [图像过亮](#图像过亮)
+* [分段线型函数](#分段线型函数)
+   * [对比度拉伸 ｜ Contrast Stretching](#对比度拉伸--contrast-stretching)
+      * [Logistic函数 | 生长函数](#logistic函数--生长函数)
+      * [两点线性 ｜ Piece Wise Linear](#两点线性--piece-wise-linear)
+   * [灰度级分层 ｜ Intensity Level Slicing](#灰度级分层--intensity-level-slicing)
+   * [Bit Plane Slicing](#bit-plane-slicing)
 
 ------
 

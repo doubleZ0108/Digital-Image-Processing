@@ -1,6 +1,7 @@
 # 直方图 | Histogram
 
-[TOC]
+* [直方图计算 | Histogram Computation](#直方图计算--histogram-computation)
+* [直方图均衡化 | Histogram Equalization](#直方图均衡化--histogram-equalization)
 
 ------
 
