@@ -1,21 +1,17 @@
 # Denoising for Astrophotography
 
-Table of Contents
-=================
-
-   * [Denoising for Astrophotography](#denoising-for-astrophotography)
-      * [1. Description](#1-description)
-      * [2. Experiment](#2-experiment)
-         * [a) Running average of the frames without frame alignment](#a-running-average-of-the-frames-without-frame-alignment)
-            * [Overall Thought of the Algorithm](#overall-thought-of-the-algorithm)
-            * [Matlab Code](#matlab-code)
-            * [Experimental Result](#experimental-result)
-            * [Experimental Effect](#experimental-effect)
-         * [b) Running average of the frames with frame alignment](#b-running-average-of-the-frames-with-frame-alignment)
-            * [Overall Thought of the Algorithm](#overall-thought-of-the-algorithm-1)
-            * [Matlab Code](#matlab-code-1)
-            * [Experimental Result](#experimental-result-1)
-            * [Experimental Effect](#experimental-effect-1)
+* [1. Description](#1-description)
+* [2. Experiment](#2-experiment)
+   * [a) Running average of the frames without frame alignment](#a-running-average-of-the-frames-without-frame-alignment)
+      * [Overall Thought of the Algorithm](#overall-thought-of-the-algorithm)
+      * [Matlab Code](#matlab-code)
+      * [Experimental Result](#experimental-result)
+      * [Experimental Effect](#experimental-effect)
+   * [b) Running average of the frames with frame alignment](#b-running-average-of-the-frames-with-frame-alignment)
+      * [Overall Thought of the Algorithm](#overall-thought-of-the-algorithm-1)
+      * [Matlab Code](#matlab-code-1)
+      * [Experimental Result](#experimental-result-1)
+      * [Experimental Effect](#experimental-effect-1)
 
 ------
 
