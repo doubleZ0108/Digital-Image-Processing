@@ -1,0 +1,46 @@
+- Introduction
+  - what is a digital image?
+  - what is digital image processing?
+  - why do we need to learn DIP?
+  - history of digital image processing
+  - different sources to generate images
+  - topics we will cover in the course
+- Digital Image Fundamentals
+  - elements of visual perception
+  - light and the electromagenetic spectrum
+  - image sensing and acquisition
+  - image sampling and quantization
+  - some basic relationships between pixels
+- Intensity Transformations and Spatial Filtering
+  - image enhancement
+  - basic intensity transformation functions
+  - histogram processing
+  - fundamentals of spatial filtering
+  - smoothing spatial filters
+  - sharpening spatial filters
+- Filtering in the Frequency Domain
+  - background
+  - from Fourier series to Fourier transform
+  - properties of the Fourier transform
+  - discrete Fourier transforms
+  - basics of filtering in the frequency domain
+  - image smoothing using frequency domain filters
+  - image sharpening using frequency domain filters
+- Image Restoration
+  - what is image restoration?
+  - a model of the image degradation/restoration process
+  - noise models
+  - additive random noise reduction
+  - periodic noise reduction
+- Image Segmentation
+  - fundamentals
+  - isolated point detection
+  - edge detection
+  - segmentation based on thresholding
+  - analytic element detection by Hough transform
+- Object Detection
+  - fundamentals
+  - pattern and pattern classes
+  - recognition based on decision - Theoretic Methods
+  - structural methods
+  - prevalent models
