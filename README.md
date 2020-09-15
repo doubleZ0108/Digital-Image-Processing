@@ -1,6 +1,8 @@
 # Digital Image Processing
 
-[toc]
+* [Body of Knowledge](#body-of-knowledge)
+* [Project Structure](#project-structure)
+* [About the Author](#about-the-author)
 
 ------
 
@@ -32,6 +34,12 @@
   - [Image Segmentation](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/Image%20Segmentation)
   - [Object Detection](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/Object%20Detection)
 - `Assignment`
+  - [Assignment Document Template](https://github.com/doubleZ0108/Digital-Image-Processing/blob/master/Assignment/Assignment%20Document%20Template.md)
+  - [Assignment 1](https://github.com/doubleZ0108/Digital-Image-Processing/blob/master/Assignment/Assignment1/Question.pdf)
+    - Experiment: [Denoising for Astrophotography](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/Denosing%20for%20Astrophotography)
+    - Experiment: [Nighttime Road Contrast Enhancement](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/NightTime%20Road%20Contrast%20Enhancement)
+  - [Assignment 2](https://github.com/doubleZ0108/Digital-Image-Processing/blob/master/Assignment/Assignment2/Problem.pdf)
+    - Prove: [when does IDFT(X(k)Y(k))=x(n)$\otimes$y(n) in 2D case](https://github.com/doubleZ0108/Digital-Image-Processing/blob/master/Assignment/Assignment2/Solution.pdf)
 - `Realization`
   - [2D figure to 3D visual form](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/img2threeDimension)
   - [split three channels of RGB figure](https://github.com/doubleZ0108/Digital-Image-Processing/tree/master/SplitRGB)
